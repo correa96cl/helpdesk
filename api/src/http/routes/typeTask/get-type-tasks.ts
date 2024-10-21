@@ -10,10 +10,12 @@ export async function getTypeTasks(app: FastifyInstance) {
             tags: ['TypeTasks'],
             summary: 'Get type of tasks',
             response: {
-                200: z.array(z.object({
-                    idTypeTask: z.number(),
-                    descriptionTypeTask: z.string()
-                }))
+                200: z.object({
+                    typeTasks : z.array(z.object({
+                        idTypeTask: z.number(),
+                        descriptionTypeTask: z.string()
+                    }))
+                })
             }
         }
     }, async (request, reply) => {
@@ -27,7 +29,7 @@ export async function getTypeTasks(app: FastifyInstance) {
             }
         })
 
-        return reply.send(typeTasks)
+        return reply.send({typeTasks})
 
 
     }

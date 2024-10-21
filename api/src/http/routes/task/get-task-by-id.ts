@@ -18,6 +18,7 @@ export async function getTaskById(app: FastifyInstance) {
                 }),
                 response: {
                     200: z.object({
+                       task: z.object({
                         idTask: z.string().uuid(),
                         numberTask: z.number().nullable(),
                         title: z.string(),
@@ -34,6 +35,7 @@ export async function getTaskById(app: FastifyInstance) {
                             descriptionSubTypeTask: z.string()
                         }),
                         idState: z.number(),
+                       })
                     }),
                 },
             },
@@ -65,7 +67,7 @@ export async function getTaskById(app: FastifyInstance) {
 
             }
 
-            return reply.send(task)
+            return reply.send({task})
 
         },)
 

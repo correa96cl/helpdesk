@@ -13,10 +13,12 @@ export async function getSubTypeByTypeTask(app: FastifyInstance) {
                 idTypeTask: z.string(),
             }),
             response: {
-                200: z.array(z.object({
-                    idSubTypeTask: z.number().nullable(),
-                    descriptionSubTypeTask: z.string().nullable()
-                }))
+                200: z.object({
+                    subTypeTasks: z.array(z.object({
+                        idSubTypeTask: z.number().nullable(),
+                        descriptionSubTypeTask: z.string().nullable()
+                    }))
+                })
             }
         }
     }, async (request, reply) => {
@@ -35,7 +37,7 @@ export async function getSubTypeByTypeTask(app: FastifyInstance) {
                 descriptionSubTypeTask: 'asc'
             }
         })
-        return reply.send(subTypeTasks)
+        return reply.send({subTypeTasks})
 
 
     }
