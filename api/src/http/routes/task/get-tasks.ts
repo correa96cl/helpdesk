@@ -27,6 +27,7 @@ export async function getTasks(app: FastifyInstance) {
                             idSubTypeTask: z.number(),
                             descriptionSubTypeTask: z.string()
                         }),
+                        createdAt: z.date(),
                         idState: z.number(),
                     }))
                 })
@@ -57,6 +58,7 @@ export async function getTasks(app: FastifyInstance) {
                         descriptionSubTypeTask: true
                     }
                 },
+                createdAt:true,
                 idState: true,
             },
             orderBy: {

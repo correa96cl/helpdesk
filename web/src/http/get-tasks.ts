@@ -19,6 +19,7 @@ interface GetTasksResponse{
         descriptionSubTypeTask: string;
     };
     idState: number;
+    createdAt: string;
     }[]
 }
 

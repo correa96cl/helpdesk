@@ -1,10 +1,11 @@
+import { ThemeProvider } from 'next-themes'
 import './globals.css'
 
 import type { Metadata } from 'next'
 
 
 export const metadata: Metadata = {
-  title: 'Create Next App',
+  title: 'App Help Desk',
 }
 
 export default function RootLayout({
@@ -14,8 +15,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className='dark'>
-       {children}
+      <body>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )
